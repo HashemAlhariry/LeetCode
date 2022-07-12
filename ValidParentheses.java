@@ -1,6 +1,3 @@
-package com.gov;
-
-
 import java.util.Stack;
 //Problem Description
 /*
