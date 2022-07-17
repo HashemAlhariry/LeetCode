@@ -1,78 +1,52 @@
 //Problem Description
 /*
-Given a string s which consists of lowercase or uppercase letters, return the length of the longest palindrome that can be built with those letters.
+A phrase is a palindrome if, after converting all uppercase letters into lowercase letters and removing all non-alphanumeric characters, it reads the same forward and backward. Alphanumeric characters include letters and numbers.
 
-Letters are case sensitive, for example, "Aa" is not considered a palindrome here.
+Given a string s, return true if it is a palindrome, or false otherwise.
 
 
 
 Example 1:
 
-Input: s = "abccccdd"
-Output: 7
-Explanation: One longest palindrome that can be built is "dccaccd", whose length is 7.
+Input: s = "A man, a plan, a canal: Panama"
+Output: true
+Explanation: "amanaplanacanalpanama" is a palindrome.
 Example 2:
 
-Input: s = "a"
-Output: 1
-Explanation: The longest palindrome that can be built is "a", whose length is 1.
+Input: s = "race a car"
+Output: false
+Explanation: "raceacar" is not a palindrome.
+Example 3:
 
-
-Constraints:
-
-1 <= s.length <= 2000
-s consists of lowercase and/or uppercase English letters only.
+Input: s = " "
+Output: true
+Explanation: s is an empty string "" after removing non-alphanumeric characters.
+Since an empty string reads the same forward and backward, it is a palindrome.
 */
 
-import java.util.HashMap;
-import java.util.Map;
+
 
 public class LongestPalindrome {
 
     public static void main(String[] args) {
-         String s = "civilwartestingwhetherthatnaptionoranynartionsoconceivedandsodedicate" +
-                 "dcanlongendureWeareqmetonagreatbattlefiemldoftzhatwarWehavecometodedicpa" +
-                 "teaportionofthatfieldasafinalrestingplaceforthosewhoheregavetheirli" +
-                 "vesthatthatnationmightliveItisaltogetherfangandproperthatweshoulddothisButin" +
-                 "alargersensewecannotdedicatewecannotconsecratewecannothallowthisgroundThebravelmenlivingandd" +
-                 "eadwhostruggledherehaveconsecrateditfaraboveourpoorponwertoaddordetractTgheworldadswfilllittle" +
-                 "notlenorlongrememberwhatwesayherebutitcanneverforgetwhattheydidhereItisforusthelivingrathertobededic" +
-                 "atedheretotheulnfinishedworkwhichtheywhofoughtherehavethusfarsonoblyadvancedItisratherforustobeherededicate" +
-                 "dtothegreattdafskremainingbeforeusthatfromthesehonoreddeadwetakeincreaseddevotiontothatcauseforwhichtheygavethe" +
-                 "lastpfullmeasureofdevotionthatweherehighlyresolvethatthesedeadshallnothavediedinvainthatthi" +
-                 "snationunsderGodshallhaveanewbirthoffreedomandthatgovernmentofthepeoplebythepe" +
-                 "opleforthepeopleshallnotperishfromtheearth";
 
-         System.out.println(longestPalindrome(s));
-
+        System.out.println( isPalindrome("0P"));
+     ;
     }
-    public static int longestPalindrome(String s) {
-        Map<Character,Integer> map=new HashMap<>();
-        for (int i = 0; i <s.length() ; i++) {
-            if(map.containsKey(s.charAt(i))){
-                map.put(s.charAt(i),map.get(s.charAt(i))+1);
-            }else{
-                map.put(s.charAt(i),1);
-            }
+
+    public static boolean isPalindrome(String s) {
+        if(s.equals(" "))
+            return true;
+        s=s.toLowerCase();
+        s=s.replaceAll("[^a-zA-Z0-9]","");
+        boolean checkPalindrome=true;
+        for (int i = 0; i <s.length()/2 ; i++) {
+            if(s.charAt(i)==s.charAt(s.length()-i-1))
+                continue;
+            else
+                checkPalindrome=false;
         }
-
-        int totalLength=0;
-        boolean foundOddNumber=false;
-
-        for (Map.Entry<Character,Integer> entry : map.entrySet()){
-            System.out.println("Key = " + entry.getKey() +
-                    ", Value = " + entry.getValue());
-            if(entry.getValue()%2==0){
-                totalLength+=entry.getValue();
-            }else {
-                totalLength+=entry.getValue()-1;
-                foundOddNumber=true;
-            }
-        }
-        if(foundOddNumber)
-          totalLength+=1;
-
-        return totalLength;
+        return checkPalindrome;
     }
 
 }
