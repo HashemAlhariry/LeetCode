@@ -45,6 +45,8 @@ public class FindNumberswithEvenNumberofDigits {
         }
         return counter;
     }
-
+    public static int findNumbers2(int[] nums) {
+        return  (int) Arrays.stream(nums).filter(e-> (e>9 && e<100) || (e>999 && e<10000) || e==100000).count();
+    }
 }
 
