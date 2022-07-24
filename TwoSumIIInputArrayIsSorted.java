@@ -1,88 +1,60 @@
 //Problem Description
 /*
-Given a 1-indexed array of integers numbers that is already sorted in non-decreasing order, find two numbers such that they add up to a specific target number. Let these two numbers be numbers[index1] and numbers[index2] where 1 <= index1 < index2 <= numbers.length.
+Given an integer n, return a string array answer (1-indexed) where:
 
-Return the indices of the two numbers, index1 and index2, added by one as an integer array [index1, index2] of length 2.
-
-The tests are generated such that there is exactly one solution. You may not use the same element twice.
-
-Your solution must use only constant extra space.
-
+answer[i] == "FizzBuzz" if i is divisible by 3 and 5.
+answer[i] == "Fizz" if i is divisible by 3.
+answer[i] == "Buzz" if i is divisible by 5.
+answer[i] == i (as a string) if none of the above conditions are true.
 
 
 Example 1:
 
-Input: numbers = [2,7,11,15], target = 9
-Output: [1,2]
-Explanation: The sum of 2 and 7 is 9. Therefore, index1 = 1, index2 = 2. We return [1, 2].
+Input: n = 3
+Output: ["1","2","Fizz"]
 Example 2:
 
-Input: numbers = [2,3,4], target = 6
-Output: [1,3]
-Explanation: The sum of 2 and 4 is 6. Therefore index1 = 1, index2 = 3. We return [1, 3].
+Input: n = 5
+Output: ["1","2","Fizz","4","Buzz"]
 Example 3:
 
-Input: numbers = [-1,0], target = -1
-Output: [1,2]
-Explanation: The sum of -1 and 0 is -1. Therefore index1 = 1, index2 = 2. We return [1, 2].
+Input: n = 15
+Output: ["1","2","Fizz","4","Buzz","Fizz","7","8","Fizz","Buzz","11","Fizz","13","14","FizzBuzz"]
 
 
 Constraints:
 
-2 <= numbers.length <= 3 * 104
--1000 <= numbers[i] <= 1000
-numbers is sorted in non-decreasing order.
--1000 <= target <= 1000
-The tests are generated such that there is exactly one solution.
+1 <= n <= 104
 */
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class TwoSumIIInputArrayIsSorted {
 
     public static void main(String[] args) {
-        int arr[]=new int[]{-1,0};
+        fizzBuzz(15);
 
     }
-    //Time Limit Exceeded
-    public static int[] twoSum(int[] numbers, int target) {
-        int arr[]=new int[2];
-        boolean checker=false;
-        for (int i = 0; i <numbers.length-1 ; i++) {
-            if(checker)
-                break;
-            for (int j = i+1; j <numbers.length ; j++) {
-                if(numbers[i]+numbers[j]==target){
-                    arr[0]=i+1;
-                    arr[1]=j+1;
-                    checker=true;
-                    break;
-                }
+    public static List<String> fizzBuzz(int n) {
+
+        List<String> list = new ArrayList<>();
+        for (int i = 1; i <=n ; i++) {
+            if(i%3==0 && i%5==0){
+                list.add("FizzBuzz");
+            }else if(i%3==0 ){
+                list.add("Fizz");
+            }else if(i%5==0 ){
+                list.add("Buzz");
+            }else{
+                list.add(String.valueOf(i));
             }
+
         }
-        return arr;
+
+        return list;
     }
 
-    public static int[] twoSum2(int[] numbers, int target) {
-        int arr[]=new int[2];
-
-        if(numbers==null || numbers.length==2)  {
-            arr[0]=1;
-            arr[1]=2;
-            return arr;
-        }
-        int left=0,right=numbers.length-1;
-        while (left<right){
-            if(numbers[left]+numbers[right]==target){
-                arr[0]=left+1;
-                arr[1]=right+1;
-                break;
-            }
-            if(numbers[left]+numbers[right]>target){
-                right--;
-            }else
-                left++;
-        }
-    return arr;
-    }
 
 }
 
