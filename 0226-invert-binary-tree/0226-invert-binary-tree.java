@@ -14,7 +14,7 @@
  * }
  */
 class Solution {
- public  TreeNode invertTree(TreeNode root) {
+  public TreeNode invertTree(TreeNode root) {
         TreeNode temp =root;
         invTree(temp);
         return root;
