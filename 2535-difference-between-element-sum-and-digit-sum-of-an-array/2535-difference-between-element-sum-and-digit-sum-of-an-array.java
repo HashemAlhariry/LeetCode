@@ -1,14 +1,16 @@
 class Solution {
     public int differenceOfSum(int[] nums) {
-        int sum = Arrays.stream(nums).sum();
-        int digSum=0;
-        for (int i = 0; i < nums.length; i++) {
-            String currNumber = Integer.toString(nums[i]);
-            for (int j = 0; j <currNumber.length(); j++) {
-                digSum+=Integer.parseInt(String.valueOf(currNumber.charAt(j)));
+      int sum = 0;
+        int digSum = 0;
+
+        for (int i = 0; i < nums.length; ++i) {
+            sum += nums[i]; 
+            int val = nums[i];
+            while (val != 0) {
+                digSum = digSum + val % 10;
+                val /= 10;
             }
         }
-
-        return Math.abs(sum-digSum);
+        return Math.abs(digSum - sum);
     }
 }
