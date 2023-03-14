@@ -14,7 +14,7 @@
  * }
  */
 class Solution {
-       public int result=0;
+    public int result=0;
     public int sumNumbers(TreeNode root) {
         int sum=0;
         helperFunction(root,sum);
