@@ -14,22 +14,22 @@
  * }
  */
 class Solution {
-    public int result=0;
+       public int result=0;
     public int sumNumbers(TreeNode root) {
-        String str="";
-        helperFunction(root,str);
+        int sum=0;
+        helperFunction(root,sum);
         return result;
     }
 
-    private void helperFunction(TreeNode root,String currentNumber) {
+    private void helperFunction(TreeNode root,int sum) {
         if(root==null)
             return;
-        currentNumber+=root.val;
+        sum=sum*10+root.val;
         if(root.left==null&&root.right==null){
-            result+=Integer.parseInt(currentNumber);
+            result+=sum;
         }
-        helperFunction(root.left,currentNumber);
-        helperFunction(root.right,currentNumber);
+        helperFunction(root.left,sum);
+        helperFunction(root.right,sum);
     }
 
 }
