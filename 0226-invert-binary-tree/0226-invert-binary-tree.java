@@ -38,7 +38,8 @@ class Solution {
             }else {
                 root.left =null;
             }
-            invertTree(root.left);
             invertTree(root.right);
+            invertTree(root.left);
+     
     }
 }
