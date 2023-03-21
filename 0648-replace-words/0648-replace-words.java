@@ -1,11 +1,11 @@
 class Solution {
-    public class Node{
+     public class Node{
         Node[] children = new Node[26];
         String current="";
 
     }
     public String replaceWords(List<String> dictionary, String sentence) {
-        String result="";
+        StringBuilder result=new StringBuilder("");
         Node rootNode = new Node();
         for (int i = 0; i <dictionary.size() ; i++) {
             insertDictionary(dictionary.get(i),rootNode);
@@ -14,12 +14,12 @@ class Solution {
 
         for (int i = 0; i <words.length ; i++) {
             String temp=getWords(words[i],rootNode);
-            result += temp=="" ?words[i]:temp;
+            result.append(temp=="" ?words[i]:temp) ;
             if(i!=words.length-1)
-                result+=" ";
+                result.append(" ");
         }
 
-        return result;
+        return result.toString();
     }
 
     private String getWords(String word, Node rootNode) {
@@ -27,10 +27,10 @@ class Solution {
         for (int i = 0; i <word.length() ; i++) {
             if(rootNode.children[word.charAt(i)-'a']!=null){
                 rootNode=rootNode.children[word.charAt(i)-'a'];
-                if(rootNode.current!="") {
-                    currentString = rootNode.current;
-                    break;
-                }
+                    if(rootNode.current!="") {
+                        currentString = rootNode.current;
+                        break;
+                    }
             }else {
                 break;
             }
