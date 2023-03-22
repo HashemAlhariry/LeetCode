@@ -13,9 +13,7 @@ private int result = Integer.MAX_VALUE;
 
     private void helperDFS(int node, Map<Integer, List<List<Integer>>> adjacentCities, boolean[] visitedCities) {
         visitedCities[node]=true;
-        if(!adjacentCities.containsKey(node)){
-            return;
-        }
+  
         for (List<Integer> edge:adjacentCities.get(node)){
             result=Math.min(result,edge.get(1));
             if(!visitedCities[edge.get(0)]){
