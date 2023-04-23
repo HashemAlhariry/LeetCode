@@ -1,10 +1,11 @@
 class Solution {
-    public static List<String> generateParenthesis(int n) {
+  
+     public static List<String> generateParenthesis(int n) {
         List<String> result = new ArrayList<>();
-        dfsHelper(n*2,result,"");
+        dfsHelper(n*2,result,new StringBuilder(""));
         return result;
     }
-    private static boolean validParenthesis(String str){
+    private static boolean validParenthesis(StringBuilder str){
         Stack<Character> stack = new Stack<>();
         for (int i = 0; i < str.length(); i++) {
             if(str.charAt(i)=='(')
@@ -18,15 +19,14 @@ class Solution {
         }
         return stack.isEmpty();
     }
-    private static void dfsHelper(int n, List<String> result,String currentString) {
+    private static void dfsHelper(int n, List<String> result,StringBuilder currentString) {
         if(currentString.length()==n){
             if(validParenthesis(currentString)) {
-                result.add(currentString);
+                result.add(currentString.toString());
             }
             return;
         }
-        dfsHelper(n,result,currentString+"(");
-        dfsHelper(n,result,currentString+")");
+        dfsHelper(n,result,new StringBuilder(currentString).append("("));
+        dfsHelper(n,result,new StringBuilder(currentString).append(")"));
     }
-
 }
