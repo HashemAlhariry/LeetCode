@@ -1,12 +1,12 @@
 class Solution {
-public static List<List<Integer>> subsets(int[] nums) {
+    public  List<List<Integer>> subsets(int[] nums) {
         List<List<Integer>> result = new ArrayList<>();
 
         dfs(result,nums,new ArrayList<Integer>(),0);
         return result;
     }
 
-    public static void dfs(List<List<Integer>> result, int[] nums, List<Integer> tempList, int i) {
+    public  void dfs(List<List<Integer>> result, int[] nums, List<Integer> tempList, int i) {
 
         if(i>nums.length-1){
             result.add(tempList);
