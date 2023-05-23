@@ -1,6 +1,6 @@
 class Solution {
 
-public  int removeDuplicates(int[] nums) {
+    public  int removeDuplicates(int[] nums) {
         int nextIndex=0;
         int counter=0;
         for (int i = 0; i <nums.length; i++) {
