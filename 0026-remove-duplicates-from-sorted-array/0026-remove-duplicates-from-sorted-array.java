@@ -10,7 +10,5 @@ class Solution {
             }
         }
         return result;
-
-
     }
 }
