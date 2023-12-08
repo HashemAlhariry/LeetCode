@@ -4,8 +4,7 @@ class Solution {
         temp=calcResult(nums,0,k);
         result=temp/k;
         for (int i = 1; i <nums.length-k+1 ; i++) {
-            temp-=nums[i-1];
-            temp+=nums[i+k-1];
+            temp = temp -nums[i-1] + nums[i+k-1];
             if(result<temp/k)
                 result=temp/k;
         }
